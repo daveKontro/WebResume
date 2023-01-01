@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>David Kontrovitz</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='./styles/main.css'>
+  <script>
+    function toggleTheme() {
+      const root = document.querySelector(':root');
+
+      const themes = {
+        indicators: {
+          mainTextColor: '--mainTextColor',
+          black: '#fff',
+        },
+        modes: {
+          dark: '-dark',
+          light: '-light',
+        },
+        get pallete() { return [
+          this.indicators.mainTextColor,
+          '--secondaryTextColor',
+          '--mainLinkColor',
+          '--mainBorderColor',
+          '--mainBgColor',
+        ]},
+        toggle({ newMode }) { return this.pallete.forEach(name => {
+          root.style.setProperty(name, `var(${name}${newMode})`)
+        })},
+      };
+
+      const rootStyle = getComputedStyle(root);
+      const mainTextColor = rootStyle
+        .getPropertyValue(themes.indicators.mainTextColor);
+
+      switch(mainTextColor) {
+        case themes.indicators.black:
+          themes.toggle({ newMode: themes.modes.light });
+          break;
+        default:
+          themes.toggle({ newMode: themes.modes.dark });
+      }
+
+      return null;
+    }
+  </script>
+</head>
+<body>
+  <div id='container--main'>
+    <section id='wrapper--hero' class='section--page'>
+      <div>
+        <img id='profile-pic' src='./assets/images/profile_pic.jpeg'/>
+        <div id='wrapper--theme-toggle'>
+          <button id='theme-toggle' onclick='toggleTheme()'>toggle theme</button>
+        </div>
+      </div>
+      <div>
+        <h1 id='user-name'>David Kontrovitz</h1>
+        <p id='bio'>Software Engineer</p>
+        <p id='bio'>
+          <a href='mailto:dkontro.dk@gmail.com'>📧 dkontro.dk@gmail.com</a>
+        </p>
+        <p id='bio'>
+          <a href='./assets/resume.pdf' target='_blank'>👉 download resume</a>
+        </p>
+      </div>
+    </section>
+    <section class='section--page'>
+      <h2>🏅 Skills & Qualifications</h2>
+      <ul id='qualifications--list'>
+        <li>✔️ Full stack web application development following agile methodologies</li>
+        <li>✔️ Experience deploying applications on cloud platforms such as AWS</li>
+        <li>✔️ Extensive experience with database design, both relational and NoSQL</li>
+      </ul>
+    </section>
+    <section class='section--page'>
+      <h2>💻 Technologies</h2>
+      <div id='wrapper--techstack__items'>
+        <div class='card--techstack'><span>JavaScript, TypeScript, Node, Python, SQL</span></div>
+        <div class='card--techstack'><span>MongoDB, Postgres, Oracle</span></div>
+        <div class='card--techstack'><span>Express, Flask, PM2, Mongoose, Gulp, Swagger</span></div>
+        <div class='card--techstack'><span>HTML5, CSS, React, Redux, Webpack, Styled Components</span></div>
+      </div>
+    </section>
+    <section id='work-history-wrapper' class='section--page'>
+      <h2>🚧 Work History</h2>
+      <div class='card--work-history'>
+        <strong>SOFTWARE ENGINEER | PRATT & WHITNEY</strong>
+        <p>2018 - Present</p>
+        <ul>
+          <li>Design, develop, and deploy a web application to track workflow for engine component repair procedure qualification.</li>
+          <li>Design, develop, and deploy a web application to visualize repair procedure and tooling dependencies to aid in priority planning.</li>
+          <li>Deploy and manage relational and NoSQL databases for apps and services.</li>
+          <li>Develop and deploy API services for use across the company.</li>
+          <li>Code master for several projects: review and approve pull requests.</li>
+          <li>Gather requirements from users for new and existing applications.</li>
+        </ul>
+      </div>
+      <div class='line-break'></div>
+      <div class='card--work-history'>
+        <strong>DEVELOPER & DATA ANALYST | PRATT & WHITNEY</strong>
+        <p>2012 - 2018</p>
+        <ul>
+          <li>Developed automated tools to analyze and assess risk associated with jet engine sales and maintenance plans.</li>
+          <li>Developed SQL views, macros, stored procedures for use in analysis tool suite.</li>
+          <li>Standardized modules for financial analysis and risk assessment.</li>
+          <li>Coordinated with QA team to create test plans prior to release.</li>
+          <li>Gathered requirements from users for new and existing tools.</li>
+        </ul>
+      </div>
+      <div class='line-break'></div>
+      <div class='card--work-history'>
+        <strong>TECHNICAL ANALYST | PRATT & WHITNEY</strong>
+        <p>2011 - 2012</p>
+        <ul>
+          <li>Supported jet engine sales campaigns and existing contract restructures; worked on team that closed a deal with over $250 million (NPV) in sales.</li>
+          <li>Supported quarterly tasks to re-baseline existing maintenance contract financial metrics.</li>
+          <li>Generated customer specific fleet maintenance forecasts and analyzed associated risk.</li>
+          <li>Created language for new engine sales contracts and contract restructures.</li>
+        </ul>
+      </div>
+      <div class='line-break'></div>
+      <div class='card--work-history'>
+        <strong>PROJECT ENGINEER | PRATT & WHITNEY</strong>
+        <p>2008 - 2011</p>
+        <ul>
+          <li>Managed jet engine part design tasks to improve performance and manufacturability; reported weekly task status to Program office.</li>
+          <li>Developed business cases for jet engine part cost reduction projects: created cost/benefit analysis, developed schedule, estimated budget.</li>
+          <li>Managed selection process of cost reduction projects based on NPV analysis and risk weighting.</li>
+          <li>Managed all turbine test activity; coordinated activities of multiple part teams; disseminated engine part teams’ test requirements to Test Engineers.</li>
+          <li>Coordinated team trips to USAF bases for engine part inspection to ascertain part performance; presented results to USAF representative personnel.</li>
+        </ul>
+      </div>
+      <div class='line-break'></div>
+      <div class='card--work-history'>
+        <strong>TURBINE DURABILITY ENGINEER | PRATT & WHITNEY</strong>
+        <p>2002 - 2008</p>
+        <ul>
+          <li>Managed jet engine part design tasks to improve performance and manufacturability; reported weekly task status to Program office.</li>
+          <li>Designed gas turbine airfoil internal cooling passages and external surface film cooling to optimize metal temperatures for F135 and other engines.</li>
+          <li>Calculated service life of gas turbine airfoils based on failure modes and mission parameters.</li>
+          <li>Inspected engine run hardware to gauge effectiveness of cooling scheme design and expand computational models’ empirical database.</li>
+          <li>Developed Engineering Standard Work for cooling scheme design workflow.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
